@@ -1,0 +1,26 @@
+{
+    "name": "Watermark",
+    "version": "0.1",
+    "description": "Add watermark on images.",
+    "keywords": [
+        "watermark",
+        "watermark on images",
+        "jquery-plugin",
+        "jquery",
+        "plugins"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/baivong/watermark.git"
+    },
+    "bugs": {
+        "url": "https://github.com/baivong/watermark/issues"
+    },
+    "author": {
+        "name": "zzbaivong",
+        "email": "lhthanh.pro@gmail.com",
+        "url": "http://devs.forumvi.com"
+    },
+    "homepage": "https://github.com/baivong/watermark",
+    "license": "MIT"
+}

@@ -1,0 +1,31 @@
+{
+    "name": "Watermark",
+    "title": "jQuery plugin Watermark",
+    "description": "Add watermark on images.",
+    "keywords": [
+        "watermark",
+        "watermark on images",
+        "jquery-plugin",
+        "jquery",
+        "plugins"
+    ],
+    "version": "0.1",
+    "author": {
+        "name": "zzbaivong",
+        "email": "lhthanh.pro@gmail.com",
+        "url": "http://devs.forumvi.com"
+    },
+    "bugs": "https://github.com/baivong/watermark/issues",
+    "homepage": "https://github.com/baivong/watermark",
+    "docs": "https://github.com/baivong/watermark/blob/master/README.md",
+    "download": "https://github.com/baivong/watermark/archive/master.zip",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.4"
+    }
+}
