@@ -1,7 +1,7 @@
 {
     "name": "Watermark",
-    "version": "0.1",
-    "description": "Add watermark on images.",
+    "version": "0.2",
+    "description": "Add watermark on images use HTML5 and Javascript.",
     "keywords": [
         "watermark",
         "watermark on images",
@@ -15,6 +15,9 @@
     },
     "bugs": {
         "url": "https://github.com/baivong/watermark/issues"
+    },
+    "dependencies": {
+        "jquery": ">=1.5"
     },
     "author": {
         "name": "zzbaivong",
