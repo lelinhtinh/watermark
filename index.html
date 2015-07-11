@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Watermark by baivong</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Watermark</h1>
+      <h2 class="project-tagline">Add watermark on images.</h2>
+      <a href="https://github.com/baivong/watermark" class="btn">View on GitHub</a>
+      <a href="https://github.com/baivong/watermark/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/baivong/watermark/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="jquery-plugin-watermark" class="anchor" href="#jquery-plugin-watermark" aria-hidden="true"><span class="octicon octicon-link"></span></a>jQuery plugin Watermark</h1>
+
+<p>jQuery plugin Watermark giúp bạn đóng dấu ảnh hàng loạt với đầy đủ các tính năng cơ bản của một tiện ích đóng dấu ảnh.</p>
+
+<p>Vì plugin này sử dụng HTML5 và Javascript nên nó sẽ hoạt động mà không cần đến một máy chủ để xử lý ảnh, vấn đề băng thông không còn là điểu bạn cần lo lắng.</p>
+
+<p>Thích hợp sử dụng cho các máy chủ web băng thông thấp, hoặc các dịch vụ tạo web, forum miễn phí mà không quản lý được máy chủ như Blogspot, Forumotion, ...</p>
+
+<h2>
+<a id="tính-năng" class="anchor" href="#t%C3%ADnh-n%C4%83ng" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tính năng</h2>
+
+<ol>
+<li> Sử dụng hình ảnh hoặc một văn bản để đóng dấu.</li>
+<li> Cho phép chọn vị trí đóng dấu ở 8 góc của ảnh.</li>
+<li> Tùy chọn kích thước và định dạng ảnh sau khi đóng dấu.</li>
+<li> Xuất ra kiểu ảnh base64 nên có thể thay trực tiếp vào ảnh cũ hoặc tải lên máy chủ cho phép, ví dụ: Imgur.</li>
+</ol>
+
+<h4>
+<a id="nhược-điểm" class="anchor" href="#nh%C6%B0%E1%BB%A3c-%C4%91i%E1%BB%83m" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nhược điểm</h4>
+
+<ol>
+<li> Không hoạt động trên các trình duyệt cũ không hỗ trợ <strong>HTML5</strong>.</li>
+<li> Không thể sử dụng hình ảnh bị máy chủ giới hạn <strong>CORS headers</strong> theo tên miền. Nếu đó là máy chủ bạn quản lý, bạn cần thiết lập <strong>Apache</strong> như sau:</li>
+</ol>
+
+<div class="highlight highlight-apache"><pre>    <span class="pl-c1">Header</span> set Access-Control-<span class="pl-c1">Allow</span>-Origin <span class="pl-s"><span class="pl-pds">"</span>*<span class="pl-pds">"</span></span>
+    <span class="pl-c1">Header</span> set Access-Control-<span class="pl-c1">Allow</span>-Headers <span class="pl-s"><span class="pl-pds">"</span>referer, range, accept-encoding, x-requested-with<span class="pl-pds">"</span></span></pre></div>
+
+<h2>
+<a id="hướng-dẫn" class="anchor" href="#h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hướng dẫn</h2>
+
+<p>Plugin này yêu cầu thư viện jQuery từ 1.5 trở lên, thêm nó vào cuối tài liệu HTML của bạn như sau:</p>
+
+<div class="highlight highlight-html"><pre><span class="pl-c">&lt;!-- jQuery 1.5+ --&gt;</span>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>jquery.js<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+<span class="pl-c">&lt;!-- jQuery plugin Watermark --&gt;</span>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>jquery.watermark.js<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>Áp dụng phương thức watermark lên các ảnh bạn cần:</p>
+
+<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+  $(<span class="pl-c1">SELECTOR</span>).watermark(<span class="pl-c1">OPTIONS</span>);
+});</pre></div>
+
+<h3>
+<a id="tùy-chọn" class="anchor" href="#t%C3%B9y-ch%E1%BB%8Dn" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tùy chọn</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th align="center">Type</th>
+<th align="center">Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td align="center">String</td>
+<td align="center">'watermark.png'</td>
+<td>Đường dẫn chứa ảnh dùng làm watermark, có thể sử dụng ảnh base64.</td>
+</tr>
+<tr>
+<td>text</td>
+<td align="center">String</td>
+<td align="center">''</td>
+<td>Văn bản dùng làm watermark.</td>
+</tr>
+<tr>
+<td>textWidth</td>
+<td align="center">Number</td>
+<td align="center">130</td>
+<td>Độ dài khung viền bao quanh văn bản, đơn vị: px.</td>
+</tr>
+<tr>
+<td>textSize</td>
+<td align="center">Number</td>
+<td align="center">12</td>
+<td>Kích thước của kiểu chữ, đơn vị: px.</td>
+</tr>
+<tr>
+<td>textColor</td>
+<td align="center">String</td>
+<td align="center">'white'</td>
+<td>Màu chữ, có thể dùng mã màu HEX, RGBA.</td>
+</tr>
+<tr>
+<td>textBg</td>
+<td align="center">String</td>
+<td align="center">'rgba(0, 0, 0, 0.4)'</td>
+<td>Màu nền, có thể dùng mã màu HEX, RGBA.</td>
+</tr>
+<tr>
+<td>gravity</td>
+<td align="center">String</td>
+<td align="center">'se'</td>
+<td>Vị trí đặt watermark ở 8 góc ảnh (nw, n, ne, w, e, sw, s, se).</td>
+</tr>
+<tr>
+<td>opacity</td>
+<td align="center">Number</td>
+<td align="center">0.7</td>
+<td>Độ trong suốt của watermark, nhận giá trị giữa 0 và 1.</td>
+</tr>
+<tr>
+<td>margin</td>
+<td align="center">Number</td>
+<td align="center">10</td>
+<td>Khoảng cách watermark so với mép ảnh.</td>
+</tr>
+<tr>
+<td>outputWidth</td>
+<td align="center">Number</td>
+<td align="center">'auto'</td>
+<td>Chiều rộng ảnh sau khi gắn watermark, đơn vị: px hoặc để 'auto'.</td>
+</tr>
+<tr>
+<td>outputHeight</td>
+<td align="center">Number</td>
+<td align="center">'auto'</td>
+<td>Chiều cao ảnh sau khi gắn watermark, đơn vị: px hoặc để 'auto'.</td>
+</tr>
+<tr>
+<td>outputType</td>
+<td align="center">String</td>
+<td align="center">'jpeg'</td>
+<td>Định dạng ảnh sau khi gắn watermark, có thể chọn 3 kiểu (jpeg, png, webm).</td>
+</tr>
+<tr>
+<td>done</td>
+<td align="center">Function</td>
+<td align="center"><code>function(imgURL){this.src=imgURL;}</code></td>
+<td>Xử lý khi tạo ảnh với watermark thành công.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td align="center">Function</td>
+<td align="center"><code>function(){}</code></td>
+<td>Xử lý khi tạo ảnh với watermark gặp lỗi.</td>
+</tr>
+<tr>
+<td>always</td>
+<td align="center">Function</td>
+<td align="center"><code>function(){}</code></td>
+<td>Xử lý khi tiến trình xử lý kết thúc.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Lưu ý</strong>:</p>
+
+<ol>
+<li> Nếu bạn sử dụng thông số <code>text</code> thì thông số <code>path</code> sẽ bị vô hiệu. Watermark sẽ được tạo từ văn bản bạn nhập vào thông số <code>text</code>.</li>
+<li> Trong thông số <code>outputType</code>, định dạng <code>webm</code> chỉ hoạt động trên trình duyệt Chrome. Với các trình duyệt khác, nó sẽ trả về định dạng <code>png</code>. Nên hạn chế dùng định dạng <code>png</code> vì chất lượng ảnh cao hơn không nhiều, mà dung lượng ảnh xuất ra khá lớn.</li>
+</ol>
+
+<h2>
+<a id="một-số-ví-dụ" class="anchor" href="#m%E1%BB%99t-s%E1%BB%91-v%C3%AD-d%E1%BB%A5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Một số ví dụ</h2>
+
+<h3>
+<a id="cách-dùng-cơ-bản" class="anchor" href="#c%C3%A1ch-d%C3%B9ng-c%C6%A1-b%E1%BA%A3n" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cách dùng cơ bản</h3>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">img</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>img_awesome<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>img/1.jpg<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> /&gt;
+&lt;<span class="pl-ent">img</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>img_awesome<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>img/2.jpg<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> /&gt;
+&lt;<span class="pl-ent">img</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>img_awesome<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>img/3.jpg<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> /&gt;</pre></div>
+
+<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+  $(<span class="pl-s"><span class="pl-pds">'</span>.img_awesome<span class="pl-pds">'</span></span>).watermark();
+});</pre></div>
+
+<p>Với cách dùng này, bạn phải đặt ảnh <code>watermark.png</code> ở trong thư mục gốc. Bạn có thể thay thế nó bằng cách thiết lập thông số <code>path</code> một URL ảnh http hoặc dạng base64.</p>
+
+<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+  $(<span class="pl-s"><span class="pl-pds">'</span>.img_awesome<span class="pl-pds">'</span></span>).watermark({
+    path<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>http://i.imgur.com/LcpZHu5.png<span class="pl-pds">'</span></span>
+  });
+});</pre></div>
+
+<h3>
+<a id="chọn-kích-thước-ảnh-xuất-ra" class="anchor" href="#ch%E1%BB%8Dn-k%C3%ADch-th%C6%B0%E1%BB%9Bc-%E1%BA%A3nh-xu%E1%BA%A5t-ra" aria-hidden="true"><span class="octicon octicon-link"></span></a>Chọn kích thước ảnh xuất ra</h3>
+
+<p>Ví dụ, giới hạn chiều rộng tối đa 500px.</p>
+
+<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+  $(<span class="pl-s"><span class="pl-pds">'</span>.img_awesome<span class="pl-pds">'</span></span>).watermark({
+    outputWidth<span class="pl-k">:</span> <span class="pl-c1">500</span>
+  });
+});</pre></div>
+
+<p>Bạn cũng có thể giới hạn theo chiều cao bằng thông số <code>outputHeight</code>. Không nên dùng cùng lúc 2 thông số kích thước, vì nó có thể làm méo hình ảnh của bạn. Chỉ nên dùng một thông số, nó sẽ điều chỉnh thông số còn lại tỉ lệ với ảnh.</p>
+
+<h3>
+<a id="sử-dụng-text-làm-watermark" class="anchor" href="#s%E1%BB%AD-d%E1%BB%A5ng-text-l%C3%A0m-watermark" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sử dụng Text làm watermark</h3>
+
+<p>Kiểu dùng này được làm theo phong cách của 9GAG.</p>
+
+<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+  $(<span class="pl-s"><span class="pl-pds">'</span>.img_awesome<span class="pl-pds">'</span></span>).watermark({
+    text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>GOOGLE.COM<span class="pl-pds">'</span></span>,
+    textWidth<span class="pl-k">:</span> <span class="pl-c1">100</span>,
+    gravity<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>w<span class="pl-pds">'</span></span>,
+    opacity<span class="pl-k">:</span> <span class="pl-c1">1</span>,
+    margin<span class="pl-k">:</span> <span class="pl-c1">12</span>
+  });
+});</pre></div>
+
+<h3>
+<a id="dùng-url-ảnh" class="anchor" href="#d%C3%B9ng-url-%E1%BA%A3nh" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dùng URL ảnh</h3>
+
+<p>Nếu bạn sử dụng URL ảnh, và bạn chỉ muốn xuất ra URL ảnh (đã gắn watermark), bạn có thể dùng cách sau:</p>
+
+<h4>
+<a id="1-ảnh" class="anchor" href="#1-%E1%BA%A3nh" aria-hidden="true"><span class="octicon octicon-link"></span></a>1 ảnh</h4>
+
+<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+    $(<span class="pl-s"><span class="pl-pds">'</span>&lt;img&gt;<span class="pl-pds">'</span></span>, {
+        src<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>http://i.imgur.com/AAPx3rB.jpg<span class="pl-pds">'</span></span>
+    }).watermark({
+        <span class="pl-en">done</span><span class="pl-k">:</span> <span class="pl-k">function</span> (<span class="pl-smi">imgURL</span>) {
+            <span class="pl-en">console</span><span class="pl-c1">.log</span>(imgURL);
+        }
+    });
+});</pre></div>
+
+<h4>
+<a id="nhiều-ảnh" class="anchor" href="#nhi%E1%BB%81u-%E1%BA%A3nh" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nhiều ảnh</h4>
+
+<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+    <span class="pl-k">var</span> inputImages <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>http://i.imgur.com/AAPx3rB.jpg<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>http://i.imgur.com/39dfdPw.jpg<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>http://i.imgur.com/3OfclQY.jpg<span class="pl-pds">'</span></span>];
+
+    <span class="pl-k">var</span> outputImages <span class="pl-k">=</span> [];
+
+    <span class="pl-k">var</span> defer <span class="pl-k">=</span> $.Deferred();
+    $.when(defer).done(<span class="pl-k">function</span> () {
+        <span class="pl-en">console</span><span class="pl-c1">.log</span>(outputImages);
+    });
+
+    $.each(inputImages, <span class="pl-k">function</span> (<span class="pl-smi">i</span>, <span class="pl-smi">v</span>) {
+        $(<span class="pl-s"><span class="pl-pds">'</span>&lt;img&gt;<span class="pl-pds">'</span></span>, {
+            src<span class="pl-k">:</span> v
+        }).watermark({
+            <span class="pl-en">done</span><span class="pl-k">:</span> <span class="pl-k">function</span> (<span class="pl-smi">imgURL</span>) {
+                outputImages[i] <span class="pl-k">=</span> imgURL;
+                <span class="pl-k">if</span> (i <span class="pl-k">+</span> <span class="pl-c1">1</span> <span class="pl-k">===</span> inputImages.<span class="pl-c1">length</span>) {
+                    defer.resolve();
+                }
+            }
+        });
+    });
+});</pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="http://opensource.org/licenses/MIT">MIT License</a> © Zzbaivong</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/baivong/watermark">Watermark</a> is maintained by <a href="https://github.com/baivong">baivong</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
