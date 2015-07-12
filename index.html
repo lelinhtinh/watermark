@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Watermark by baivong</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -28,6 +29,85 @@
 
 <p>Thích hợp sử dụng cho các máy chủ web băng thông thấp, hoặc các dịch vụ tạo web, forum miễn phí mà không quản lý được máy chủ như Blogspot, Forumotion, ...</p>
 
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
+<div id="pluginConfig">
+    <div class="imageConfig">
+      <h3>Thiết lập plugin watermark</h3>
+       <form id="watermarkConfig">
+        <p>
+            <label><span>path:</span>
+                <input type="url" placeholder="Nhập URL hình ảnh" name="path" id="path" class="inputLarge" value="http://baivong.github.io/watermark/watermark.png">
+            </label>
+        </p>
+        <p>
+            <label><span>text:</span>
+                <input type="text" placeholder="Nhập chữ" name="text" id="text" class="inputLarge">
+            </label>
+        </p>
+        <p id="textConfig">
+            <label><span>textWidth:</span>
+                <input type="number" name="textWidth" id="textWidth" class="inputSmall" value="130">
+            </label>
+            <label>textSize:
+                <input type="number" name="textSize" id="textSize" class="inputSmall" value="12">
+            </label>
+            <label>textColor:
+                <input type="color" name="textColor" id="textColor" class="inputSmall" value="#ffffff">
+            </label>
+            <label>textBg:
+                <input type="color" name="textBg" id="textBg" class="inputSmall" value="#000000">
+            </label>
+        </p>
+        <p>
+            <label><span>gravity:</span>
+                <select name="gravity" id="gravity">
+                    <option value="nw">Northwest</option>
+                    <option value="n">North</option>
+                    <option value="ne">Northeast</option>
+                    <option value="w">West</option>
+                    <option value="e">East</option>
+                    <option value="sw">Southwest</option>
+                    <option value="s">South</option>
+                    <option value="se" selected>Southeast</option>
+                </select>
+            </label>
+        </p>
+        <p>
+            <label><span>opacity:</span>
+                <input type="number" value="0.7" min="0" max="1" step="0.1" id="opacity" name="opacity" class="inputSmall">
+            </label>
+        </p>
+        <p>
+            <label><span>margin:</span>
+                <input type="number" value="10" id="margin" name="margin" class="inputSmall">
+            </label>
+        </p>
+        <p>
+            <label><span>outputWidth:</span>
+                <input type="text" value="auto" id="outputWidth" name="outputWidth" class="inputSmall">
+            </label>
+            <label>outputHeight:
+                <input type="text" value="auto" id="outputHeight" name="outputHeight" class="inputSmall">
+            </label>
+            <label>outputType:
+                <select name="outputType" id="outputType">
+                    <option value="jpeg" selected>jpeg</option>
+                    <option value="png">png</option>
+                    <option value="webp">webp</option>
+                </select>
+            </label>
+        </p>
+        <p class="buttons">
+            <input type="reset" value="Đặt về mặc định">
+            <input type="submit" value="Xác nhận">
+        </p>
+        </form>
+    </div>
+    <div id="withWatermark" class="imageWrap">
+        <img id="imageDemo" src="images/1.png" alt="">
+    </div>
+</div>
 <h2>
 <a id="tính-năng" class="anchor" href="#t%C3%ADnh-n%C4%83ng" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tính năng</h2>
 
@@ -148,7 +228,7 @@
 <td>outputType</td>
 <td align="center">String</td>
 <td align="center">'jpeg'</td>
-<td>Định dạng ảnh sau khi gắn watermark, có thể chọn 3 kiểu (jpeg, png, webm).</td>
+<td>Định dạng ảnh sau khi gắn watermark, có thể chọn 3 kiểu (jpeg, png, webp).</td>
 </tr>
 <tr>
 <td>done</td>
@@ -175,7 +255,7 @@
 
 <ol>
 <li> Nếu bạn sử dụng thông số <code>text</code> thì thông số <code>path</code> sẽ bị vô hiệu. Watermark sẽ được tạo từ văn bản bạn nhập vào thông số <code>text</code>.</li>
-<li> Trong thông số <code>outputType</code>, định dạng <code>webm</code> chỉ hoạt động trên trình duyệt Chrome. Với các trình duyệt khác, nó sẽ trả về định dạng <code>png</code>. Nên hạn chế dùng định dạng <code>png</code> vì chất lượng ảnh cao hơn không nhiều, mà dung lượng ảnh xuất ra khá lớn.</li>
+<li> Trong thông số <code>outputType</code>, định dạng <code>webp</code> chỉ hoạt động trên trình duyệt Chrome. Với các trình duyệt khác, nó sẽ trả về định dạng <code>png</code>. Nên hạn chế dùng định dạng <code>png</code> vì chất lượng ảnh cao hơn không nhiều, mà dung lượng ảnh xuất ra khá lớn.</li>
 </ol>
 
 <h2>
@@ -285,7 +365,13 @@
       </footer>
 
     </section>
-
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="javascripts/jquery.min.js"><\\/script>')
+    </script>
+    <script src="javascripts/jquery.watermark.min.js" type="text/javascript"></script>
+    <script src="javascripts/main.js" type="text/javascript"></script>
   
   </body>
 </html>
