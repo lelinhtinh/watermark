@@ -7,6 +7,11 @@ Vì plugin này sử dụng HTML5 và Javascript nên nó sẽ hoạt động m�
 
 Thích hợp sử dụng cho các máy chủ web băng thông thấp, hoặc các dịch vụ tạo web, forum miễn phí mà không quản lý được máy chủ như Blogspot, Forumotion, ...
 
+Demo
+----
+
+http://baivong.github.io/watermark/
+
 Tính năng
 ---------
 
@@ -60,7 +65,7 @@ $(function() {
 | margin       |  Number  |                  10                  | Khoảng cách watermark so với mép ảnh.                                      |
 | outputWidth  |  Number  |                'auto'                | Chiều rộng ảnh sau khi gắn watermark, đơn vị: px hoặc để 'auto'.           |
 | outputHeight |  Number  |                'auto'                | Chiều cao ảnh sau khi gắn watermark, đơn vị: px hoặc để 'auto'.            |
-| outputType   |  String  |                'jpeg'                | Định dạng ảnh sau khi gắn watermark, có thể chọn 3 kiểu (jpeg, png, webm). |
+| outputType   |  String  |                'jpeg'                | Định dạng ảnh sau khi gắn watermark, có thể chọn 3 kiểu (jpeg, png, webp). |
 | done         | Function | `function(imgURL){this.src=imgURL;}` | Xử lý khi tạo ảnh với watermark thành công.                                |
 | fail         | Function |            `function(){}`            | Xử lý khi tạo ảnh với watermark gặp lỗi.                                   |
 | always       | Function |            `function(){}`            | Xử lý khi tiến trình xử lý kết thúc.                                       |
@@ -68,7 +73,7 @@ $(function() {
 **Lưu ý**:
 
 1.	Nếu bạn sử dụng thông số `text` thì thông số `path` sẽ bị vô hiệu. Watermark sẽ được tạo từ văn bản bạn nhập vào thông số `text`.
-2.	Trong thông số `outputType`, định dạng `webm` chỉ hoạt động trên trình duyệt Chrome. Với các trình duyệt khác, nó sẽ trả về định dạng `png`. Nên hạn chế dùng định dạng `png` vì chất lượng ảnh cao hơn không nhiều, mà dung lượng ảnh xuất ra khá lớn.
+2.	Trong thông số `outputType`, định dạng `webp` chỉ hoạt động trên trình duyệt Chrome. Với các trình duyệt khác, nó sẽ trả về định dạng `png`. Nên hạn chế dùng định dạng `png` vì chất lượng ảnh cao hơn không nhiều, mà dung lượng ảnh xuất ra khá lớn.
 
 Một số ví dụ
 ------------

@@ -34,7 +34,7 @@
 
             outputWidth: 'auto',
             outputHeight: 'auto',
-            outputType: 'jpeg', // jpeg | png | webm
+            outputType: 'jpeg', // jpeg | png | webp
 
             done: function (imgURL) {
                 this.src = imgURL;
