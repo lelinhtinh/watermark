@@ -55,7 +55,6 @@ $(function () {
                 $withWatermark.html('<span style="color: red;">Lỗi ảnh: ' + imgURL + '</span>');
             }
         }, obj);
-        console.log(config);
         $('<img>', {
             src: 'images/1.png'
         }).watermark(config)

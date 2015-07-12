@@ -358,7 +358,7 @@ p > label > span {
 .buttons > input:active {
     background-color: #333;
 }
-#textConfig, #imageDemo {
+#textConfig {
     display: none;
 }
 .imageWrap {
