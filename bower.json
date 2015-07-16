@@ -1,0 +1,29 @@
+{
+  "name": "watermark",
+  "version": "1.0.0",
+  "homepage": "http://baivong.github.io/watermark/",
+  "authors": [
+    "Zzbaivong <lhthanh.pro@gmail.com> (https://github.com/baivong)"
+  ],
+  "description": "Add watermark on images use HTML5 and Javascript.",
+  "main": "dist/jquery.watermark.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "watermark",
+    "image",
+    "jquery-plugin",
+    "ecosystem:jquery",
+    "jquery",
+    "plugins"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
