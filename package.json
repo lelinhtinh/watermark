@@ -1,6 +1,6 @@
 {
     "name": "Watermark",
-    "version": "0.2",
+    "version": "0.2.0",
     "description": "Add watermark on images use HTML5 and Javascript.",
     "keywords": [
         "watermark",
@@ -22,8 +22,8 @@
     "author": {
         "name": "zzbaivong",
         "email": "lhthanh.pro@gmail.com",
-        "url": "http://devs.forumvi.com"
+        "url": "https://github.com/baivong"
     },
-    "homepage": "https://github.com/baivong/watermark",
+    "homepage": "http://baivong.github.io/watermark",
     "license": "MIT"
 }

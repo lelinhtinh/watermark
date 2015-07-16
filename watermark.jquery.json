@@ -9,14 +9,14 @@
         "jquery",
         "plugins"
     ],
-    "version": "0.2",
+    "version": "0.2.0",
     "author": {
         "name": "zzbaivong",
         "email": "lhthanh.pro@gmail.com",
-        "url": "http://devs.forumvi.com"
+        "url": "https://github.com/baivong"
     },
     "bugs": "https://github.com/baivong/watermark/issues",
-    "homepage": "https://github.com/baivong/watermark",
+    "homepage": "http://baivong.github.io/watermark",
     "docs": "https://github.com/baivong/watermark/blob/master/README.md",
     "download": "https://github.com/baivong/watermark/archive/master.zip",
     "licenses": [
