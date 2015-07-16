@@ -4,8 +4,9 @@
     "description": "Add watermark on images use HTML5 and Javascript.",
     "keywords": [
         "watermark",
-        "images",
+        "image",
         "jquery-plugin",
+        "ecosystem:jquery",
         "jquery",
         "plugins"
     ],
