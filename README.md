@@ -10,7 +10,7 @@ Thích hợp sử dụng cho các máy chủ web băng thông thấp, hoặc cá
 Demo
 ----
 
-http://baivong.github.io/watermark/
+[http://baivong.github.io/watermark/](http://baivong.github.io/watermark/)
 
 Tính năng
 ---------
@@ -28,6 +28,26 @@ Tính năng
 ```apache
 	Header set Access-Control-Allow-Origin "*"
 	Header set Access-Control-Allow-Headers "referer, range, accept-encoding, x-requested-with"
+```
+
+Tải xuống
+---------
+
+Tải trực tiếp tệp [watermark.zip](https://github.com/baivong/watermark/zipball/master) hoặc [watermark.tar.gz](https://github.com/baivong/watermark/tarball/master) hoặc dùng:
+
+[Git](https://git-scm.com/)
+```bash
+$ git clone https://github.com/baivong/watermark.git
+```
+
+[Bower](http://bower.io/)
+```bash
+$ bower install watermark
+```
+
+[npm](http://www.npmjs.com/)
+```bash
+$ npm install watermark
 ```
 
 Hướng dẫn
