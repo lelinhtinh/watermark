@@ -1,10 +1,10 @@
 {
-    "name": "Watermark",
+    "name": "watermark",
     "title": "jQuery plugin Watermark",
     "description": "Add watermark on images use HTML5 and Javascript.",
     "keywords": [
         "watermark",
-        "watermark on images",
+        "images",
         "jquery-plugin",
         "jquery",
         "plugins"
