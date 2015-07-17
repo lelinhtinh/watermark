@@ -1,39 +1,39 @@
 jQuery plugin Watermark
 =======================
 
-jQuery plugin Watermark giúp bạn đóng dấu ảnh hàng loạt với đầy đủ các tính năng cơ bản của một tiện ích đóng dấu ảnh.
+JQuery plugin Watermark help you seal batch of images, like a stamp tool.
 
-Vì plugin này sử dụng HTML5 và Javascript nên nó sẽ hoạt động mà không cần đến một máy chủ để xử lý ảnh, vấn đề băng thông không còn là điểu bạn cần lo lắng.
+Because this plugin is written in HTML5 and Javascript, so it will operate without a server for image processing, bandwidth limit is no longer the thing you need to worry.
 
-Thích hợp sử dụng cho các máy chủ web băng thông thấp, hoặc các dịch vụ tạo web, forum miễn phí mà không quản lý được máy chủ như Blogspot, Forumotion, ...
+Suitable uses for low-bandwidth web server, or web creation services, free forums without management server as Blogspot, Forumotion, ...
 
 Demo
 ----
 
 [http://baivong.github.io/watermark/](http://baivong.github.io/watermark/)
 
-Tính năng
----------
+Features
+--------
 
-1.	Sử dụng hình ảnh hoặc một văn bản để đóng dấu.
-2.	Cho phép chọn vị trí đóng dấu ở 8 góc của ảnh.
-3.	Tùy chọn kích thước và định dạng ảnh sau khi đóng dấu.
-4.	Xuất ra kiểu ảnh base64 nên có thể thay trực tiếp vào ảnh cũ hoặc tải lên máy chủ cho phép, ví dụ: Imgur.
+1.	Using an image or text to stamp.
+2.	Allows you to select a position to stamp on 8 corners of the image.
+3.	Size and format options after the stamped image.
+4.	Export image to base64 type, so might instead directly into the old photos or upload server allows, for example, Imgur.
 
-#### Nhược điểm
+#### Defect
 
-1.	Không hoạt động trên các trình duyệt cũ không hỗ trợ **HTML5**.
-2.	Không thể sử dụng hình ảnh bị máy chủ giới hạn **CORS headers** theo tên miền. Nếu đó là máy chủ bạn quản lý, bạn cần thiết lập **Apache** như sau:
+1.	Does not work on older browsers that don't support **HTML5**.
+2.	Cannot use images be limited server **CORS headers** according to the domain name. If this server in your rights management, you need to set up **Apache** as follows:
 
 ```apache
 	Header set Access-Control-Allow-Origin "*"
 	Header set Access-Control-Allow-Headers "referer, range, accept-encoding, x-requested-with"
 ```
 
-Tải xuống
----------
+Download
+--------
 
-Tải trực tiếp tệp [watermark.zip](https://github.com/baivong/watermark/zipball/master) hoặc [watermark.tar.gz](https://github.com/baivong/watermark/tarball/master) hoặc dùng:
+Direct download file [watermark.zip](https://github.com/baivong/watermark/zipball/master) or [watermark.tar.gz](https://github.com/baivong/watermark/tarball/master) or use the command line:
 
 [Git](https://git-scm.com/)
 ```bash
@@ -50,10 +50,10 @@ $ bower install watermark
 $ npm install watermark
 ```
 
-Hướng dẫn
----------
+How to use
+----------
 
-Plugin này yêu cầu thư viện jQuery từ 1.5 trở lên, thêm nó vào cuối tài liệu HTML của bạn như sau:
+This plugin requires jQuery library from 1.5 or above, add it at the end of your HTML document as follows:
 
 ```html
 <!-- jQuery 1.5+ -->
@@ -62,7 +62,7 @@ Plugin này yêu cầu thư viện jQuery từ 1.5 trở lên, thêm nó vào cu
 <script src="jquery.watermark.js" type="text/javascript"></script>
 ```
 
-Áp dụng phương thức watermark lên các ảnh bạn cần:
+Usage:
 
 ```js
 $(function() {
@@ -70,35 +70,35 @@ $(function() {
 });
 ```
 
-### Tùy chọn
+### Options
 
 | Name         | Type     | Default                              | Description                                                                |
 |--------------|:--------:|:------------------------------------:|----------------------------------------------------------------------------|
-| path         |  String  |           'watermark.png'            | Đường dẫn chứa ảnh dùng làm watermark, có thể sử dụng ảnh base64.          |
-| text         |  String  |                  ''                  | Văn bản dùng làm watermark.                                                |
-| textWidth    |  Number  |                 130                  | Độ dài khung viền bao quanh văn bản, đơn vị: px.                           |
-| textSize     |  Number  |                  12                  | Kích thước của kiểu chữ, đơn vị: px.                                       |
-| textColor    |  String  |               'white'                | Màu chữ, có thể dùng mã màu HEX, RGBA.                                     |
-| textBg       |  String  |         'rgba(0, 0, 0, 0.4)'         | Màu nền, có thể dùng mã màu HEX, RGBA.                                     |
-| gravity      |  String  |                 'se'                 | Vị trí đặt watermark ở 8 góc ảnh (nw, n, ne, w, e, sw, s, se).             |
-| opacity      |  Number  |                 0.7                  | Độ trong suốt của watermark, nhận giá trị giữa 0 và 1.                     |
-| margin       |  Number  |                  10                  | Khoảng cách watermark so với mép ảnh.                                      |
-| outputWidth  |  Number  |                'auto'                | Chiều rộng ảnh sau khi gắn watermark, đơn vị: px hoặc để 'auto'.           |
-| outputHeight |  Number  |                'auto'                | Chiều cao ảnh sau khi gắn watermark, đơn vị: px hoặc để 'auto'.            |
-| outputType   |  String  |                'jpeg'                | Định dạng ảnh sau khi gắn watermark, có thể chọn 3 kiểu (jpeg, png, webp). |
-| done         | Function | `function(imgURL){this.src=imgURL;}` | Xử lý khi tạo ảnh với watermark thành công.                                |
-| fail         | Function |            `function(){}`            | Xử lý khi tạo ảnh với watermark gặp lỗi.                                   |
-| always       | Function |            `function(){}`            | Xử lý khi tiến trình xử lý kết thúc.                                       |
+| path         |  String  |           'watermark.png'            | Path contains images used as a watermark, can use base64 image.          |
+| text         |  String  |                  ''                  | Text used as a watermark.                                                |
+| textWidth    |  Number  |                 130                  | Text width of frame surrounds, units: px.                           |
+| textSize     |  Number  |                  12                  | Font size of text, units: px.                                       |
+| textColor    |  String  |               'white'                | Text color, you can use HEX or RGBA color codes.                                     |
+| textBg       |  String  |         'rgba(0, 0, 0, 0.4)'         | Background color, you can use HEX or RGBA color codes.                                     |
+| gravity      |  String  |                 'se'                 | The position of the watermark on the image (nw, n, ne, w, e, sw, s, se).             |
+| opacity      |  Number  |                 0.7                  | The transparency of watermark, the value between 0 and 1.                     |
+| margin       |  Number  |                  10                  | Distance from watermark to edge of image.                                      |
+| outputWidth  |  Number  |                'auto'                | Image width after adding watermark, units: px or use 'auto'.           |
+| outputHeight |  Number  |                'auto'                | Image height after adding watermark, units: px or use 'auto'.            |
+| outputType   |  String  |                'jpeg'                | Image format after adding watermark, You can use one of three types (jpeg, png, webp). |
+| done         | Function | `function(imgURL){this.src=imgURL;}` | Called after image with watermark is created.                                |
+| fail         | Function |            `function(){}`            | Called after an error of images is occurring.                                   |
+| always       | Function |            `function(){}`            | Called when processing finishes (done and fail).                                       |
 
-**Lưu ý**:
+**Note**:
 
-1.	Nếu bạn sử dụng thông số `text` thì thông số `path` sẽ bị vô hiệu. Watermark sẽ được tạo từ văn bản bạn nhập vào thông số `text`.
-2.	Trong thông số `outputType`, định dạng `webp` chỉ hoạt động trên trình duyệt Chrome. Với các trình duyệt khác, nó sẽ trả về định dạng `png`. Nên hạn chế dùng định dạng `png` vì chất lượng ảnh cao hơn không nhiều, mà dung lượng ảnh xuất ra khá lớn.
+1.	If you use the `text` parameter, `path` parameter will be disabled. The watermark will be created from the text you type in `text` parameter.
+2.	In the `outputType` parameter, `webp` format only works on the Chrome browser. With other browsers, it will return the `png` format. Should avoid use `png` format, because image quality not much higher, but the output image size is quite large.
 
-Một số ví dụ
-------------
+Examples
+--------
 
-### Cách dùng cơ bản
+### Basic usage
 
 ```html
 <img class="img_awesome" src="img/1.jpg" alt="" />
@@ -112,7 +112,7 @@ $(function() {
 });
 ```
 
-Với cách dùng này, bạn phải đặt ảnh `watermark.png` ở trong thư mục gốc. Bạn có thể thay thế nó bằng cách thiết lập thông số `path` một URL ảnh http hoặc dạng base64.
+With this usage, you need put `watermark.png` image in the root directory. You can replace it by using the `path` parameter with an URL image or base64 image.
 
 ```js
 $(function() {
@@ -122,9 +122,9 @@ $(function() {
 });
 ```
 
-### Chọn kích thước ảnh xuất ra
+### Choose output image size
 
-Ví dụ, giới hạn chiều rộng tối đa 500px.
+For example, limit the maximum width is 500px.
 
 ```js
 $(function() {
@@ -134,11 +134,11 @@ $(function() {
 });
 ```
 
-Bạn cũng có thể giới hạn theo chiều cao bằng thông số `outputHeight`. Không nên dùng cùng lúc 2 thông số kích thước, vì nó có thể làm méo hình ảnh của bạn. Chỉ nên dùng một thông số, nó sẽ điều chỉnh thông số còn lại tỉ lệ với ảnh.
+You can also limit the height of image with `outputHeight` parameter. Should not use 2 size parameters simultaneously, because it can distort your image. Should only use a parameter, it will adjust the remaining parameter with image ratio.
 
-### Sử dụng Text làm watermark
+### Use text as watermark
 
-Kiểu dùng này được làm theo phong cách của 9GAG.
+Like 9gag style.
 
 ```js
 $(function() {
@@ -152,11 +152,11 @@ $(function() {
 });
 ```
 
-### Dùng URL ảnh
+### Use image URL
 
-Nếu bạn sử dụng URL ảnh, và bạn chỉ muốn xuất ra URL ảnh (đã gắn watermark), bạn có thể dùng cách sau:
+If you use the image URL, and you just want to export the image URL (added watermark), you can use the following ways:
 
-#### 1 ảnh
+#### One image
 
 ```js
 $(function() {
@@ -170,7 +170,7 @@ $(function() {
 });
 ```
 
-#### Nhiều ảnh
+#### Multiple images
 
 ```js
 $(function() {
@@ -199,4 +199,4 @@ $(function() {
 ```
 
 ## License
-[MIT License](http://opensource.org/licenses/MIT) © Zzbaivong
+[MIT License](http://opensource.org/licenses/MIT) © [Zzbaivong](https://github.com/baivong)
