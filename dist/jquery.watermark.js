@@ -21,6 +21,7 @@
     var pluginName = 'watermark',
         defaults = {
             path: 'watermark.png',
+            dataPath: false,
 
             text: '',
             textWidth: 130,
@@ -30,7 +31,8 @@
 
             gravity: 'se', // nw | n | ne | w | e | sw | s | se
             opacity: 0.7,
-            margin: 10,
+            margin: 0,
+            fullOverlay: false,
 
             outputWidth: 'auto',
             outputHeight: 'auto',
@@ -61,9 +63,10 @@
             var _this = this,
                 ele = _this.element,
                 set = _this.settings,
+                actualPath = set.dataPath ? $(ele).data(set.dataPath) : set.path,
 
                 wmData = {
-                    imgurl: set.path,
+                    imgurl: actualPath,
                     type: 'png',
                     cross: true
                 },
@@ -77,7 +80,7 @@
                 };
 
             // Watermark dạng base64
-            if (set.path.search(/data:image\/(png|jpg|jpeg|gif);base64,/) === 0) {
+            if (actualPath.search(/data:image\/(png|jpg|jpeg|gif);base64,/) === 0) {
                 wmData.cross = false;
             }
 
@@ -205,8 +208,8 @@
                     }
 
                     // Vị trí chèn, gọi theo hướng trên bản đồ
-                    var wmW = data.wmObj.width,
-                        wmH = data.wmObj.height,
+                    var wmW = set.fullOverlay ? w : data.wmObj.width,
+                        wmH = set.fullOverlay ? h : data.wmObj.height,
                         pos = set.margin,
                         gLeft, gTop;
 
