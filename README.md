@@ -200,3 +200,6 @@ $(function() {
 
 ## License
 [MIT License](http://opensource.org/licenses/MIT) © [Zzbaivong](https://github.com/baivong)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/baivong/watermark/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
