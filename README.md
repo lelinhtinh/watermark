@@ -1,6 +1,8 @@
 jQuery plugin Watermark
 =======================
 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark?ref=badge_shield)
+
 JQuery plugin Watermark help you seal batch of images, like a stamp tool.
 
 Because this plugin is written in HTML5 and Javascript, so it will operate without a server for image processing, bandwidth limit is no longer the thing you need to worry.
@@ -10,7 +12,7 @@ Suitable uses for low-bandwidth web server, or web creation services, free forum
 Demo
 ----
 
-[http://baivong.github.io/watermark/](http://baivong.github.io/watermark/)
+<https://lelinhtinh.github.io/watermark/>
 
 Features
 --------
@@ -26,18 +28,18 @@ Features
 2.	Cannot use images be limited server **CORS headers** according to the domain name. If this server in your rights management, you need to set up **Apache** as follows:
 
 ```apache
-	Header set Access-Control-Allow-Origin "*"
-	Header set Access-Control-Allow-Headers "referer, range, accept-encoding, x-requested-with"
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Headers "referer, range, accept-encoding, x-requested-with"
 ```
 
 Download
 --------
 
-Direct download file [watermark.zip](https://github.com/baivong/watermark/zipball/master) or [watermark.tar.gz](https://github.com/baivong/watermark/tarball/master) or use the command line:
+Direct download file [watermark.zip](https://github.com/lelinhtinh/watermark/zipball/master) or [watermark.tar.gz](https://github.com/lelinhtinh/watermark/tarball/master) or use the command line:
 
 [Git](https://git-scm.com/)
 ```bash
-$ git clone https://github.com/baivong/watermark.git
+$ git clone https://github.com/lelinhtinh/watermark.git
 ```
 
 [Bower](http://bower.io/)
@@ -199,8 +201,7 @@ $(function() {
 ```
 
 ## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark?ref=badge_shield)
 
-[MIT License](http://opensource.org/licenses/MIT) © [Zzbaivong](https://github.com/baivong)
+[MIT License](http://opensource.org/licenses/MIT) © [Zzbaivong](https://github.com/lelinhtinh)
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark?ref=badge_large)
