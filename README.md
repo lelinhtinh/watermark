@@ -199,4 +199,8 @@ $(function() {
 ```
 
 ## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark?ref=badge_shield)
+
 [MIT License](http://opensource.org/licenses/MIT) © [Zzbaivong](https://github.com/baivong)
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark?ref=badge_large)
