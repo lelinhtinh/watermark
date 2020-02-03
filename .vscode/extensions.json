@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "dbaeumer.jshint",
+    "olback.es6-css-minify",
+    "esbenp.prettier-vscode"
+  ]
+}
