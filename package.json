@@ -1,6 +1,6 @@
 {
   "name": "watermark",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Add watermark on images use HTML5 and Javascript.",
   "keywords": [
     "watermark",
@@ -12,10 +12,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/baivong/watermark.git"
+    "url": "https://github.com/lelinhtinh/watermark.git"
   },
   "bugs": {
-    "url": "https://github.com/baivong/watermark/issues"
+    "url": "https://github.com/lelinhtinh/watermark/issues"
   },
   "dependencies": {
     "jquery": ">=1.5"
@@ -23,8 +23,8 @@
   "author": {
     "name": "zzbaivong",
     "email": "lhthanh.pro@gmail.com",
-    "url": "https://github.com/baivong"
+    "url": "https://github.com/lelinhtinh"
   },
-  "homepage": "http://baivong.github.io/watermark",
+  "homepage": "https://lelinhtinh.github.io/watermark",
   "license": "MIT"
 }

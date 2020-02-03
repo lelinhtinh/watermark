@@ -1,5 +1,4 @@
-jQuery plugin Watermark
-=======================
+# jQuery plugin Watermark
 
 jQuery plugin Watermark giúp bạn đóng dấu ảnh hàng loạt với đầy đủ các tính năng cơ bản của một tiện ích đóng dấu ảnh.
 
@@ -7,51 +6,50 @@ Vì plugin này sử dụng HTML5 và Javascript nên nó sẽ hoạt động m�
 
 Thích hợp sử dụng cho các máy chủ web băng thông thấp, hoặc các dịch vụ tạo web, forum miễn phí mà không quản lý được máy chủ như Blogspot, Forumotion, ...
 
-Demo
-----
+## Demo
 
-[http://baivong.github.io/watermark/](http://baivong.github.io/watermark/)
+<https://lelinhtinh.github.io/watermark/>
 
-Tính năng
----------
+## Tính năng
 
-1.	Sử dụng hình ảnh hoặc một văn bản để đóng dấu.
-2.	Cho phép chọn vị trí đóng dấu ở 8 góc của ảnh.
-3.	Tùy chọn kích thước và định dạng ảnh sau khi đóng dấu.
-4.	Xuất ra kiểu ảnh base64 nên có thể thay trực tiếp vào ảnh cũ hoặc tải lên máy chủ cho phép, ví dụ: Imgur.
+1. Sử dụng hình ảnh hoặc một văn bản để đóng dấu.
+2. Cho phép chọn vị trí đóng dấu ở 8 góc của ảnh.
+3. Tùy chọn kích thước và định dạng ảnh sau khi đóng dấu.
+4. Xuất ra kiểu ảnh base64 nên có thể thay trực tiếp vào ảnh cũ hoặc tải lên máy chủ cho phép, ví dụ: Imgur.
 
-#### Nhược điểm
+### Nhược điểm
 
-1.	Không hoạt động trên các trình duyệt cũ không hỗ trợ **HTML5**.
-2.	Không thể sử dụng hình ảnh bị máy chủ giới hạn **CORS headers** theo tên miền. Nếu đó là máy chủ bạn quản lý, bạn cần thiết lập **Apache** như sau:
+1. Không hoạt động trên các trình duyệt cũ không hỗ trợ **HTML5**.
+2. Không thể sử dụng hình ảnh bị máy chủ giới hạn **CORS headers** theo tên miền. Nếu đó là máy chủ bạn quản lý, bạn cần thiết lập **Apache** như sau:
 
 ```apache
-	Header set Access-Control-Allow-Origin "*"
-	Header set Access-Control-Allow-Headers "referer, range, accept-encoding, x-requested-with"
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Headers "referer, range, accept-encoding, x-requested-with"
 ```
 
-Tải xuống
----------
+## Tải xuống
 
-Tải trực tiếp tệp [watermark.zip](https://github.com/baivong/watermark/zipball/master) hoặc [watermark.tar.gz](https://github.com/baivong/watermark/tarball/master) hoặc dùng:
+Tải trực tiếp tệp [watermark.zip](https://github.com/lelinhtinh/watermark/zipball/master) hoặc [watermark.tar.gz](https://github.com/lelinhtinh/watermark/tarball/master) hoặc dùng:
 
 [Git](https://git-scm.com/)
+
 ```bash
-$ git clone https://github.com/baivong/watermark.git
+git clone https://github.com/lelinhtinh/watermark.git
 ```
 
 [Bower](http://bower.io/)
+
 ```bash
-$ bower install watermark
+bower install watermark
 ```
 
 [npm](http://www.npmjs.com/)
+
 ```bash
-$ npm install watermark
+npm install watermark
 ```
 
-Hướng dẫn
----------
+## Hướng dẫn
 
 Plugin này yêu cầu thư viện jQuery từ 1.5 trở lên, thêm nó vào cuối tài liệu HTML của bạn như sau:
 
@@ -80,7 +78,7 @@ $(function() {
 | textSize     |  Number  |                  12                  | Kích thước của kiểu chữ, đơn vị: px.                                       |
 | textColor    |  String  |               'white'                | Màu chữ, có thể dùng mã màu HEX, RGBA.                                     |
 | textBg       |  String  |         'rgba(0, 0, 0, 0.4)'         | Màu nền, có thể dùng mã màu HEX, RGBA.                                     |
-| gravity      |  String  |                 'se'                 | Vị trí đặt watermark ở 8 góc ảnh (nw, n, ne, w, e, sw, s, se).             |
+| gravity      |  String  |                 'se'                 | Vị trí đặt watermark ở 9 góc ảnh (nw, n, ne, w, e, sw, s, se, c).             |
 | opacity      |  Number  |                 0.7                  | Độ trong suốt của watermark, nhận giá trị giữa 0 và 1.                     |
 | margin       |  Number  |                  10                  | Khoảng cách watermark so với mép ảnh.                                      |
 | outputWidth  |  Number  |                'auto'                | Chiều rộng ảnh sau khi gắn watermark, đơn vị: px hoặc để 'auto'.           |
@@ -92,11 +90,10 @@ $(function() {
 
 **Lưu ý**:
 
-1.	Nếu bạn sử dụng thông số `text` thì thông số `path` sẽ bị vô hiệu. Watermark sẽ được tạo từ văn bản bạn nhập vào thông số `text`.
-2.	Trong thông số `outputType`, định dạng `webp` chỉ hoạt động trên trình duyệt Chrome. Với các trình duyệt khác, nó sẽ trả về định dạng `png`. Nên hạn chế dùng định dạng `png` vì chất lượng ảnh cao hơn không nhiều, mà dung lượng ảnh xuất ra khá lớn.
+1. Nếu bạn sử dụng thông số `text` thì thông số `path` sẽ bị vô hiệu. Watermark sẽ được tạo từ văn bản bạn nhập vào thông số `text`.
+2. Trong thông số `outputType`, định dạng `webp` chỉ hoạt động trên trình duyệt Chrome. Với các trình duyệt khác, nó sẽ trả về định dạng `png`. Nên hạn chế dùng định dạng `png` vì chất lượng ảnh cao hơn không nhiều, mà dung lượng ảnh xuất ra khá lớn.
 
-Một số ví dụ
-------------
+## Một số ví dụ
 
 ### Cách dùng cơ bản
 
@@ -199,4 +196,5 @@ $(function() {
 ```
 
 ## License
-[MIT License](http://opensource.org/licenses/MIT) © [Zzbaivong](https://github.com/baivong)
+
+[MIT License](http://opensource.org/licenses/MIT) © [lelinhtinh](https://github.com/lelinhtinh)

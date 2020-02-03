@@ -2,7 +2,7 @@
  *  Project: jQuery plugin Watermark
  *  Description: Add watermark on images use HTML5 and Javascript.
  *  Author: Zzbaivong (devs.forumvi.com)
- *  Version: 1.0.1
+ *  Version: 1.0.2
  *  License: MIT
  */
 

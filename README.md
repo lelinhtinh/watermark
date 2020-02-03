@@ -1,7 +1,6 @@
-jQuery plugin Watermark
-=======================
+# jQuery plugin Watermark
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark?ref=badge_shield)
+![npm](https://img.shields.io/npm/v/watermark) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark?ref=badge_shield)
 
 JQuery plugin Watermark help you seal batch of images, like a stamp tool.
 
@@ -9,51 +8,50 @@ Because this plugin is written in HTML5 and Javascript, so it will operate witho
 
 Suitable uses for low-bandwidth web server, or web creation services, free forums without management server as Blogspot, Forumotion, ...
 
-Demo
-----
+## Demo
 
 <https://lelinhtinh.github.io/watermark/>
 
-Features
---------
+## Features
 
-1.	Using an image or text to stamp.
-2.	Allows you to select a position to stamp on 8 corners of the image.
-3.	Size and format options after the stamped image.
-4.	Export image to base64 type, so might instead directly into the old photos or upload server allows, for example, Imgur.
+1. Using an image or text to stamp.
+2. Allows you to select a position to stamp on 8 corners of the image.
+3. Size and format options after the stamped image.
+4. Export image to base64 type, so might instead directly into the old photos or upload server allows, for example, Imgur.
 
-#### Defect
+### Defect
 
-1.	Does not work on older browsers that don't support **HTML5**.
-2.	Cannot use images be limited server **CORS headers** according to the domain name. If this server in your rights management, you need to set up **Apache** as follows:
+1. Does not work on older browsers that don't support **HTML5**.
+2. Cannot use images be limited server **CORS headers** according to the domain name. If this server in your rights management, you need to set up **Apache** as follows:
 
 ```apache
 Header set Access-Control-Allow-Origin "*"
 Header set Access-Control-Allow-Headers "referer, range, accept-encoding, x-requested-with"
 ```
 
-Download
---------
+## Download
 
 Direct download file [watermark.zip](https://github.com/lelinhtinh/watermark/zipball/master) or [watermark.tar.gz](https://github.com/lelinhtinh/watermark/tarball/master) or use the command line:
 
 [Git](https://git-scm.com/)
+
 ```bash
-$ git clone https://github.com/lelinhtinh/watermark.git
+git clone https://github.com/lelinhtinh/watermark.git
 ```
 
 [Bower](http://bower.io/)
+
 ```bash
-$ bower install watermark
+bower install watermark
 ```
 
 [npm](http://www.npmjs.com/)
+
 ```bash
-$ npm install watermark
+npm install watermark
 ```
 
-How to use
-----------
+## How to use
 
 This plugin requires jQuery library from 1.5 or above, add it at the end of your HTML document as follows:
 
@@ -74,31 +72,30 @@ $(function() {
 
 ### Options
 
-| Name         | Type     | Default                              | Description                                                                |
-|--------------|:--------:|:------------------------------------:|----------------------------------------------------------------------------|
-| path         |  String  |           'watermark.png'            | Path contains images used as a watermark, can use base64 image.          |
-| text         |  String  |                  ''                  | Text used as a watermark.                                                |
-| textWidth    |  Number  |                 130                  | Text width of frame surrounds, units: px.                           |
-| textSize     |  Number  |                  12                  | Font size of text, units: px.                                       |
-| textColor    |  String  |               'white'                | Text color, you can use HEX or RGBA color codes.                                     |
-| textBg       |  String  |         'rgba(0, 0, 0, 0.4)'         | Background color, you can use HEX or RGBA color codes.                                     |
-| gravity      |  String  |                 'se'                 | The position of the watermark on the image (nw, n, ne, w, e, sw, s, se).             |
-| opacity      |  Number  |                 0.7                  | The transparency of watermark, the value between 0 and 1.                     |
-| margin       |  Number  |                  10                  | Distance from watermark to edge of image.                                      |
-| outputWidth  |  Number  |                'auto'                | Image width after adding watermark, units: px or use 'auto'.           |
-| outputHeight |  Number  |                'auto'                | Image height after adding watermark, units: px or use 'auto'.            |
+| Name         |   Type   |               Default                | Description                                                                            |
+| ------------ | :------: | :----------------------------------: | -------------------------------------------------------------------------------------- |
+| path         |  String  |           'watermark.png'            | Path contains images used as a watermark, can use base64 image.                        |
+| text         |  String  |                  ''                  | Text used as a watermark.                                                              |
+| textWidth    |  Number  |                 130                  | Text width of frame surrounds, units: px.                                              |
+| textSize     |  Number  |                  12                  | Font size of text, units: px.                                                          |
+| textColor    |  String  |               'white'                | Text color, you can use HEX or RGBA color codes.                                       |
+| textBg       |  String  |         'rgba(0, 0, 0, 0.4)'         | Background color, you can use HEX or RGBA color codes.                                 |
+| gravity      |  String  |                 'se'                 | The position of the watermark on the image (nw, n, ne, w, e, sw, s, se, c).               |
+| opacity      |  Number  |                 0.7                  | The transparency of watermark, the value between 0 and 1.                              |
+| margin       |  Number  |                  10                  | Distance from watermark to edge of image.                                              |
+| outputWidth  |  Number  |                'auto'                | Image width after adding watermark, units: px or use 'auto'.                           |
+| outputHeight |  Number  |                'auto'                | Image height after adding watermark, units: px or use 'auto'.                          |
 | outputType   |  String  |                'jpeg'                | Image format after adding watermark, You can use one of three types (jpeg, png, webp). |
-| done         | Function | `function(imgURL){this.src=imgURL;}` | Called after image with watermark is created.                                |
-| fail         | Function |            `function(){}`            | Called after an error of images is occurring.                                   |
+| done         | Function | `function(imgURL){this.src=imgURL;}` | Called after image with watermark is created.                                          |
+| fail         | Function |            `function(){}`            | Called after an error of images is occurring.                                          |
 | always       | Function |            `function(){}`            | Called when processing finishes (done and fail).                                       |
 
 **Note**:
 
-1.	If you use the `text` parameter, `path` parameter will be disabled. The watermark will be created from the text you type in `text` parameter.
-2.	In the `outputType` parameter, `webp` format only works on the Chrome browser. With other browsers, it will return the `png` format. Should avoid use `png` format, because image quality not much higher, but the output image size is quite large.
+1. If you use the `text` parameter, `path` parameter will be disabled. The watermark will be created from the text you type in `text` parameter.
+2. In the `outputType` parameter, `webp` format only works on the Chrome browser. With other browsers, it will return the `png` format. Should avoid use `png` format, because image quality not much higher, but the output image size is quite large.
 
-Examples
---------
+## Examples
 
 ### Basic usage
 
@@ -202,6 +199,6 @@ $(function() {
 
 ## License
 
-[MIT License](http://opensource.org/licenses/MIT) © [Zzbaivong](https://github.com/lelinhtinh)
+[MIT License](http://opensource.org/licenses/MIT) © [lelinhtinh](https://github.com/lelinhtinh)
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Flelinhtinh%2Fwatermark?ref=badge_large)
