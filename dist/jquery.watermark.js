@@ -2,7 +2,7 @@
  *  Project: jQuery plugin Watermark
  *  Description: Add watermark on images use HTML5 and Javascript.
  *  Author: Zzbaivong (devs.forumvi.com)
- *  Version: 0.2
+ *  Version: 1.0.1
  *  License: MIT
  */
 
@@ -28,7 +28,7 @@
             textColor: 'white',
             textBg: 'rgba(0, 0, 0, 0.4)',
 
-            gravity: 'se', // nw | n | ne | w | e | sw | s | se
+            gravity: 'se', // nw | n | ne | w | e | sw | s | se | c
             opacity: 0.7,
             margin: 0,
             fullOverlay: false,
@@ -205,7 +205,7 @@
                         gTop;
 
                     switch (
-                        set.gravity // nw | n | ne | w | e | sw | s | se
+                        set.gravity // nw | n | ne | w | e | sw | s | se | c
                     ) {
                         case 'nw': // Tây bắc
                             gLeft = pos;
@@ -234,6 +234,10 @@
                         case 's': // Nam
                             gLeft = w / 2 - wmW / 2;
                             gTop = h - wmH - pos;
+                            break;
+                        case 'c': // Trung tâm
+                            gLeft = w / 2 - wmW / 2;
+                            gTop = (h - wmH) / 2;
                             break;
                         default:
                             // Đông Nam
