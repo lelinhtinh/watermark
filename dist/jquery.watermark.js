@@ -14,8 +14,7 @@
  *  Made by Zeno Rocha
  *  Under MIT License
  */
-;(function ($, window, document, undefined) {
-
+(function($, window, document, undefined) {
     'use strict';
 
     var pluginName = 'watermark',
@@ -38,15 +37,15 @@
             outputHeight: 'auto',
             outputType: 'jpeg', // jpeg | png | webp
 
-            done: function (imgURL) {
+            done: function(imgURL) {
                 this.src = imgURL;
             },
-            fail: function ( /*imgURL*/ ) {
+            fail: function(/*imgURL*/) {
                 // console.error(imgURL, 'image error!');
             },
-            always: function ( /*imgURL*/ ) {
+            always: function(/*imgURL*/) {
                 // console.log(imgURL, 'image URL!');
-            }
+            },
         };
 
     function Plugin(element, options) {
@@ -58,25 +57,22 @@
     }
 
     $.extend(Plugin.prototype, {
-        init: function () {
-
+        init: function() {
             var _this = this,
                 ele = _this.element,
                 set = _this.settings,
                 actualPath = set.dataPath ? $(ele).data(set.dataPath) : set.path,
-
                 wmData = {
                     imgurl: actualPath,
                     type: 'png',
-                    cross: true
+                    cross: true,
                 },
-
                 imageData = {
                     imgurl: ele.src,
                     cross: true,
                     type: set.outputType,
                     width: set.outputWidth,
-                    height: set.outputHeight
+                    height: set.outputHeight,
                 };
 
             // Watermark dạng base64
@@ -91,9 +87,9 @@
 
             var defer = $.Deferred();
 
-            $.when(defer).done(function (imgObj) {
+            $.when(defer).done(function(imgObj) {
                 imageData.wmObj = imgObj;
-                _this.imgurltodata(imageData, function (dataURL) {
+                _this.imgurltodata(imageData, function(dataURL) {
                     set.done.call(ele, dataURL);
                     set.always.call(ele, dataURL);
                 });
@@ -104,7 +100,7 @@
                 wmData.cross = false;
             }
 
-            _this.imgurltodata(wmData, function (imgObj) {
+            _this.imgurltodata(wmData, function(imgObj) {
                 defer.resolve(imgObj);
             });
         },
@@ -113,13 +109,11 @@
          * Chuyển text sang ảnh để làm watermark
          * @returns {String} URL ảnh dạng base64
          */
-        textwatermark: function () {
+        textwatermark: function() {
             var _this = this,
                 set = _this.settings,
-
                 canvas = document.createElement('CANVAS'),
                 ctx = canvas.getContext('2d'),
-
                 w = set.textWidth,
                 h = set.textSize + 8;
 
@@ -133,7 +127,7 @@
             ctx.textAlign = 'center';
             ctx.font = '500 ' + set.textSize + 'px Sans-serif';
 
-            ctx.fillText(set.text, (w / 2), (set.textSize + 2));
+            ctx.fillText(set.text, w / 2, set.textSize + 2);
 
             return canvas.toDataURL();
         },
@@ -143,8 +137,7 @@
          * @param   {Object}  data     Các thông số thiết lập để phân biệt loại ảnh và với watermark
          * @param   {String}  callback URL ảnh dạng base64
          */
-        imgurltodata: function (data, callback) {
-
+        imgurltodata: function(data, callback) {
             var _this = this,
                 set = _this.settings,
                 ele = _this.element;
@@ -155,7 +148,7 @@
                 img.crossOrigin = 'Anonymous';
             }
 
-            img.onload = function () {
+            img.onload = function() {
                 var canvas = document.createElement('CANVAS');
                 var ctx = canvas.getContext('2d');
 
@@ -164,18 +157,16 @@
                     ctxH;
 
                 if (data.wmObj) {
-
                     if (data.width !== 'auto' && data.height === 'auto' && data.width < w) {
-                        h = h / w * data.width;
+                        h = (h / w) * data.width;
                         w = data.width;
                     } else if (data.width === 'auto' && data.height !== 'auto' && data.height < h) {
-                        w = w / h * data.height;
+                        w = (w / h) * data.height;
                         h = data.height;
                     } else if (data.width !== 'auto' && data.height !== 'auto' && data.width < w && data.height < h) {
                         w = data.width;
                         h = data.height;
                     }
-
                 }
 
                 // Xoay dọc watermark sử dụng text, khi ở vị trí giữa mép dọc
@@ -183,7 +174,7 @@
                     canvas.width = h;
                     canvas.height = w;
                     ctxH = -h;
-                    ctx.rotate(90 * Math.PI / 180);
+                    ctx.rotate((90 * Math.PI) / 180);
                 } else {
                     canvas.width = w;
                     canvas.height = h;
@@ -200,7 +191,6 @@
 
                 // Xử lý watermark được chèn vào
                 if (data.wmObj) {
-
                     // Độ trong suốt
                     var op = set.opacity;
                     if (op > 0 && op < 1) {
@@ -211,9 +201,12 @@
                     var wmW = set.fullOverlay ? w : data.wmObj.width,
                         wmH = set.fullOverlay ? h : data.wmObj.height,
                         pos = set.margin,
-                        gLeft, gTop;
+                        gLeft,
+                        gTop;
 
-                    switch (set.gravity) { // nw | n | ne | w | e | sw | s | se
+                    switch (
+                        set.gravity // nw | n | ne | w | e | sw | s | se
+                    ) {
                         case 'nw': // Tây bắc
                             gLeft = pos;
                             gTop = pos;
@@ -242,7 +235,8 @@
                             gLeft = w / 2 - wmW / 2;
                             gTop = h - wmH - pos;
                             break;
-                        default: // Đông Nam
+                        default:
+                            // Đông Nam
                             gLeft = w - wmW - pos;
                             gTop = h - wmH - pos;
                     }
@@ -253,11 +247,11 @@
                 var dataURL = canvas.toDataURL('image/' + data.type);
 
                 if (typeof callback === 'function') {
-
-                    if (data.wmObj) { // Đã có watermark
+                    if (data.wmObj) {
+                        // Đã có watermark
                         callback(dataURL);
-
-                    } else { // watermark
+                    } else {
+                        // watermark
                         var wmNew = new Image();
                         wmNew.src = dataURL;
                         callback(wmNew);
@@ -268,22 +262,21 @@
             };
 
             // Xử lý ảnh tải lỗi hoặc có thể do từ chối CORS headers
-            img.onerror = function () {
+            img.onerror = function() {
                 set.fail.call(this, this.src);
                 set.always.call(ele, this.src);
                 return false;
             };
 
             img.src = data.imgurl;
-        }
+        },
     });
 
-    $.fn[pluginName] = function (options) {
-        return this.each(function () {
+    $.fn[pluginName] = function(options) {
+        return this.each(function() {
             if (!$.data(this, 'plugin_' + pluginName)) {
                 $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
             }
         });
     };
-
-}(jQuery, window, document));
+})(jQuery, window, document);
