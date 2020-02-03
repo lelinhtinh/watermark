@@ -1,327 +1,372 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+
+<head>
     <meta charset="UTF-8">
-    <title>Watermark by baivong</title>
+    <title>Watermark by lelinhtinh</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
+</head>
+
+<body>
     <section class="page-header">
-      <h1 class="project-name">Watermark</h1>
-      <h2 class="project-tagline">Add watermark on images.</h2>
-      <a href="https://github.com/baivong/watermark" class="btn">View on GitHub</a>
-      <a href="https://github.com/baivong/watermark/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/baivong/watermark/tarball/master" class="btn">Download .tar.gz</a>
+        <h1 class="project-name">Watermark</h1>
+        <h2 class="project-tagline">Add watermark on images.</h2>
+        <a href="https://github.com/lelinhtinh/watermark" class="btn">View on GitHub</a>
+        <a href="https://github.com/lelinhtinh/watermark/zipball/master" class="btn">Download .zip</a>
+        <a href="https://github.com/lelinhtinh/watermark/tarball/master" class="btn">Download .tar.gz</a>
     </section>
 
     <section class="main-content">
-    <h1>
-<a id="jquery-plugin-watermark" class="anchor" href="#jquery-plugin-watermark" aria-hidden="true"><span class="octicon octicon-link"></span></a>jQuery plugin Watermark</h1>
+        <h1>
+            <a id="jquery-plugin-watermark" class="anchor" href="#jquery-plugin-watermark" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>jQuery plugin Watermark</h1>
 
-<p>JQuery plugin Watermark help you seal batch of images, like a stamp tool.</p>
+        <p>JQuery plugin Watermark help you seal batch of images, like a stamp tool.</p>
 
-<p>Because this plugin is written in HTML5 and Javascript, so it will operate without a server for image processing, bandwidth limit is no longer the thing you need to worry.</p>
+        <p>Because this plugin is written in HTML5 and Javascript, so it will operate without a server for image
+            processing, bandwidth limit is no longer the thing you need to worry.</p>
 
-<p>Suitable uses for low-bandwidth web server, or web creation services, free forums without management server as Blogspot, Forumotion, ...</p>
+        <p>Suitable uses for low-bandwidth web server, or web creation services, free forums without management server
+            as Blogspot, Forumotion, ...</p>
 
-<h2>
-<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
-<div id="pluginConfig">
-    <div class="imageConfig">
-      <h3>Plugin watermark config</h3>
-       <form id="watermarkConfig">
-        <p>
-            <label><span>path:</span>
-                <input type="url" placeholder="Enter image URL" name="path" id="path" class="inputLarge" value="http://baivong.github.io/watermark/watermark.png">
-            </label>
+        <h2>
+            <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Demo</h2>
+        <div id="pluginConfig">
+            <div class="imageConfig">
+                <h3>Plugin watermark config</h3>
+                <form id="watermarkConfig">
+                    <p>
+                        <label><span>path:</span>
+                            <input type="url" placeholder="Enter image URL" name="path" id="path" class="inputLarge"
+                                value="https://lelinhtinh.github.io/watermark/watermark.png">
+                        </label>
+                    </p>
+                    <p>
+                        <label><span>text:</span>
+                            <input type="text" placeholder="Enter text" name="text" id="text" class="inputLarge">
+                        </label>
+                    </p>
+                    <p id="textConfig">
+                        <label><span>textWidth:</span>
+                            <input type="number" name="textWidth" id="textWidth" class="inputSmall" value="130">
+                        </label>
+                        <label>textSize:
+                            <input type="number" name="textSize" id="textSize" class="inputSmall" value="12">
+                        </label>
+                        <label>textColor:
+                            <input type="color" name="textColor" id="textColor" class="inputSmall" value="#ffffff">
+                        </label>
+                        <label>textBg:
+                            <input type="color" name="textBg" id="textBg" class="inputSmall" value="#000000">
+                        </label>
+                    </p>
+                    <p>
+                        <label><span>gravity:</span>
+                            <select name="gravity" id="gravity">
+                                <option value="nw">Northwest</option>
+                                <option value="n">North</option>
+                                <option value="ne">Northeast</option>
+                                <option value="w">West</option>
+                                <option value="e">East</option>
+                                <option value="sw">Southwest</option>
+                                <option value="s">South</option>
+                                <option value="se" selected>Southeast</option>
+                                <option value="c">Central</option>
+                            </select>
+                        </label>
+                    </p>
+                    <p>
+                        <label><span>opacity:</span>
+                            <input type="number" value="0.7" min="0" max="1" step="0.1" id="opacity" name="opacity"
+                                class="inputSmall">
+                        </label>
+                    </p>
+                    <p>
+                        <label><span>margin:</span>
+                            <input type="number" value="10" id="margin" name="margin" class="inputSmall">
+                        </label>
+                    </p>
+                    <p>
+                        <label><span>outputWidth:</span>
+                            <input type="text" value="auto" id="outputWidth" name="outputWidth" class="inputSmall">
+                        </label>
+                        <label>outputHeight:
+                            <input type="text" value="auto" id="outputHeight" name="outputHeight" class="inputSmall">
+                        </label>
+                        <label>outputType:
+                            <select name="outputType" id="outputType">
+                                <option value="jpeg" selected>jpeg</option>
+                                <option value="png">png</option>
+                                <option value="webp">webp</option>
+                            </select>
+                        </label>
+                    </p>
+                    <p class="buttons">
+                        <input type="reset" value="Reset">
+                        <input type="submit" value="Submit">
+                    </p>
+                </form>
+            </div>
+            <div id="withWatermark" class="imageWrap">
+                <img id="imageDemo" src="images/1.png" alt="">
+            </div>
+        </div>
+
+        <h2>
+            <a id="features" class="anchor" href="#features" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Features</h2>
+
+        <ol>
+            <li> Using an image or text to stamp.</li>
+            <li> Allows you to select a position to stamp on 8 corners of the image.</li>
+            <li> Size and format options after the stamped image.</li>
+            <li> Export image to base64 type, so might instead directly into the old photos or upload server allows, for
+                example, Imgur.</li>
+        </ol>
+
+        <h3>
+            <a id="defect" class="anchor" href="#defect" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Defects</h3>
+
+        <ol>
+            <li> Does not work on older browsers that don't support <strong>HTML5</strong>.</li>
+            <li> Cannot use images be limited server <strong>CORS headers</strong> according to the domain name. If this
+                server in your rights management, you need to set up <strong>Apache</strong> as follows:</li>
+        </ol>
+
+        <div class="highlight highlight-apache">
+            <pre><span class="pl-c1">Header</span> set Access-Control-<span class="pl-c1">Allow</span>-Origin <span class="pl-s"><span class="pl-pds">"</span>*<span class="pl-pds">"</span></span>
+<span class="pl-c1">Header</span> set Access-Control-<span class="pl-c1">Allow</span>-Headers <span class="pl-s"><span class="pl-pds">"</span>referer, range, accept-encoding, x-requested-with<span class="pl-pds">"</span></span></pre>
+        </div>
+
+        <h2>
+            <a id="download" class="anchor" href="#download" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Download</h2>
+
+        <p>Direct download file <a href="https://github.com/lelinhtinh/watermark/zipball/master">watermark.zip</a> or <a
+                href="https://github.com/lelinhtinh/watermark/tarball/master">watermark.tar.gz</a> or use the command
+            line:</p>
+
+        <p><a href="https://git-scm.com/">Git</a></p>
+
+        <div class="highlight highlight-bash">
+            <pre>git clone https://github.com/lelinhtinh/watermark.git</pre>
+        </div>
+
+        <p><a href="https://bower.io/">Bower</a></p>
+
+        <div class="highlight highlight-bash">
+            <pre>bower install watermark</pre>
+        </div>
+
+        <p><a href="https://www.npmjs.com/">npm</a></p>
+
+        <div class="highlight highlight-bash">
+            <pre>npm install watermark</pre>
+        </div>
+
+        <h2>
+            <a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>How to use</h2>
+
+        <p>This plugin requires jQuery library from 1.5 or above, add it at the end of your HTML document as follows:
         </p>
-        <p>
-            <label><span>text:</span>
-                <input type="text" placeholder="Enter text" name="text" id="text" class="inputLarge">
-            </label>
-        </p>
-        <p id="textConfig">
-            <label><span>textWidth:</span>
-                <input type="number" name="textWidth" id="textWidth" class="inputSmall" value="130">
-            </label>
-            <label>textSize:
-                <input type="number" name="textSize" id="textSize" class="inputSmall" value="12">
-            </label>
-            <label>textColor:
-                <input type="color" name="textColor" id="textColor" class="inputSmall" value="#ffffff">
-            </label>
-            <label>textBg:
-                <input type="color" name="textBg" id="textBg" class="inputSmall" value="#000000">
-            </label>
-        </p>
-        <p>
-            <label><span>gravity:</span>
-                <select name="gravity" id="gravity">
-                    <option value="nw">Northwest</option>
-                    <option value="n">North</option>
-                    <option value="ne">Northeast</option>
-                    <option value="w">West</option>
-                    <option value="e">East</option>
-                    <option value="sw">Southwest</option>
-                    <option value="s">South</option>
-                    <option value="se" selected>Southeast</option>
-                </select>
-            </label>
-        </p>
-        <p>
-            <label><span>opacity:</span>
-                <input type="number" value="0.7" min="0" max="1" step="0.1" id="opacity" name="opacity" class="inputSmall">
-            </label>
-        </p>
-        <p>
-            <label><span>margin:</span>
-                <input type="number" value="10" id="margin" name="margin" class="inputSmall">
-            </label>
-        </p>
-        <p>
-            <label><span>outputWidth:</span>
-                <input type="text" value="auto" id="outputWidth" name="outputWidth" class="inputSmall">
-            </label>
-            <label>outputHeight:
-                <input type="text" value="auto" id="outputHeight" name="outputHeight" class="inputSmall">
-            </label>
-            <label>outputType:
-                <select name="outputType" id="outputType">
-                    <option value="jpeg" selected>jpeg</option>
-                    <option value="png">png</option>
-                    <option value="webp">webp</option>
-                </select>
-            </label>
-        </p>
-        <p class="buttons">
-            <input type="reset" value="Reset">
-            <input type="submit" value="Submit">
-        </p>
-        </form>
-    </div>
-    <div id="withWatermark" class="imageWrap">
-        <img id="imageDemo" src="images/1.png" alt="">
-    </div>
-</div>
 
-<h2>
-<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
-
-<p><a href="http://baivong.github.io/watermark/">http://baivong.github.io/watermark/</a></p>
-
-<h2>
-<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
-
-<ol>
-<li> Using an image or text to stamp.</li>
-<li> Allows you to select a position to stamp on 8 corners of the image.</li>
-<li> Size and format options after the stamped image.</li>
-<li> Export image to base64 type, so might instead directly into the old photos or upload server allows, for example, Imgur.</li>
-</ol>
-
-<h4>
-<a id="defect" class="anchor" href="#defect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Defect</h4>
-
-<ol>
-<li> Does not work on older browsers that don't support <strong>HTML5</strong>.</li>
-<li> Cannot use images be limited server <strong>CORS headers</strong> according to the domain name. If this server in your rights management, you need to set up <strong>Apache</strong> as follows:</li>
-</ol>
-
-<div class="highlight highlight-apache"><pre>    <span class="pl-c1">Header</span> set Access-Control-<span class="pl-c1">Allow</span>-Origin <span class="pl-s"><span class="pl-pds">"</span>*<span class="pl-pds">"</span></span>
-    <span class="pl-c1">Header</span> set Access-Control-<span class="pl-c1">Allow</span>-Headers <span class="pl-s"><span class="pl-pds">"</span>referer, range, accept-encoding, x-requested-with<span class="pl-pds">"</span></span></pre></div>
-
-<h2>
-<a id="download" class="anchor" href="#download" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download</h2>
-
-<p>Direct download file <a href="https://github.com/baivong/watermark/zipball/master">watermark.zip</a> or <a href="https://github.com/baivong/watermark/tarball/master">watermark.tar.gz</a> or use the command line:</p>
-
-<p><a href="https://git-scm.com/">Git</a></p>
-
-<div class="highlight highlight-bash"><pre>$ git clone https://github.com/baivong/watermark.git</pre></div>
-
-<p><a href="http://bower.io/">Bower</a></p>
-
-<div class="highlight highlight-bash"><pre>$ bower install watermark</pre></div>
-
-<p><a href="http://www.npmjs.com/">npm</a></p>
-
-<div class="highlight highlight-bash"><pre>$ npm install watermark</pre></div>
-
-<h2>
-<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h2>
-
-<p>This plugin requires jQuery library from 1.5 or above, add it at the end of your HTML document as follows:</p>
-
-<div class="highlight highlight-html"><pre><span class="pl-c">&lt;!-- jQuery 1.5+ --&gt;</span>
+        <div class="highlight highlight-html">
+            <pre><span class="pl-c">&lt;!-- jQuery 1.5+ --&gt;</span>
 &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>jquery.js<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
 <span class="pl-c">&lt;!-- jQuery plugin Watermark --&gt;</span>
-&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>jquery.watermark.js<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>jquery.watermark.js<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre>
+        </div>
 
-<p>Usage:</p>
+        <p>Usage:</p>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+        <div class="highlight highlight-js">
+            <pre>$(<span class="pl-k">function</span>() {
   $(<span class="pl-c1">SELECTOR</span>).watermark(<span class="pl-c1">OPTIONS</span>);
-});</pre></div>
+});</pre>
+        </div>
 
-<h3>
-<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h3>
+        <h3>
+            <a id="options" class="anchor" href="#options" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Options</h3>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th align="center">Type</th>
-<th align="center">Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>path</td>
-<td align="center">String</td>
-<td align="center">'watermark.png'</td>
-<td>Path contains images used as a watermark, can use base64 image.</td>
-</tr>
-<tr>
-<td>text</td>
-<td align="center">String</td>
-<td align="center">''</td>
-<td>Text used as a watermark.</td>
-</tr>
-<tr>
-<td>textWidth</td>
-<td align="center">Number</td>
-<td align="center">130</td>
-<td>Text width of frame surrounds, units: px.</td>
-</tr>
-<tr>
-<td>textSize</td>
-<td align="center">Number</td>
-<td align="center">12</td>
-<td>Font size of text, units: px.</td>
-</tr>
-<tr>
-<td>textColor</td>
-<td align="center">String</td>
-<td align="center">'white'</td>
-<td>Text color, you can use HEX or RGBA color codes.</td>
-</tr>
-<tr>
-<td>textBg</td>
-<td align="center">String</td>
-<td align="center">'rgba(0, 0, 0, 0.4)'</td>
-<td>Background color, you can use HEX or RGBA color codes.</td>
-</tr>
-<tr>
-<td>gravity</td>
-<td align="center">String</td>
-<td align="center">'se'</td>
-<td>The position of the watermark on the image (nw, n, ne, w, e, sw, s, se).</td>
-</tr>
-<tr>
-<td>opacity</td>
-<td align="center">Number</td>
-<td align="center">0.7</td>
-<td>The transparency of watermark, the value between 0 and 1.</td>
-</tr>
-<tr>
-<td>margin</td>
-<td align="center">Number</td>
-<td align="center">10</td>
-<td>Distance from watermark to edge of image.</td>
-</tr>
-<tr>
-<td>outputWidth</td>
-<td align="center">Number</td>
-<td align="center">'auto'</td>
-<td>Image width after adding watermark, units: px or use 'auto'.</td>
-</tr>
-<tr>
-<td>outputHeight</td>
-<td align="center">Number</td>
-<td align="center">'auto'</td>
-<td>Image height after adding watermark, units: px or use 'auto'.</td>
-</tr>
-<tr>
-<td>outputType</td>
-<td align="center">String</td>
-<td align="center">'jpeg'</td>
-<td>Image format after adding watermark, You can use one of three types (jpeg, png, webp).</td>
-</tr>
-<tr>
-<td>done</td>
-<td align="center">Function</td>
-<td align="center"><code>function(imgURL){this.src=imgURL;}</code></td>
-<td>Called after image with watermark is created.</td>
-</tr>
-<tr>
-<td>fail</td>
-<td align="center">Function</td>
-<td align="center"><code>function(){}</code></td>
-<td>Called after an error of images is occurring.</td>
-</tr>
-<tr>
-<td>always</td>
-<td align="center">Function</td>
-<td align="center"><code>function(){}</code></td>
-<td>Called when processing finishes (done and fail).</td>
-</tr>
-</tbody>
-</table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th align="center">Type</th>
+                    <th align="center">Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>path</td>
+                    <td align="center">String</td>
+                    <td align="center">'watermark.png'</td>
+                    <td>Path contains images used as a watermark, can use base64 image.</td>
+                </tr>
+                <tr>
+                    <td>text</td>
+                    <td align="center">String</td>
+                    <td align="center">''</td>
+                    <td>Text used as a watermark.</td>
+                </tr>
+                <tr>
+                    <td>textWidth</td>
+                    <td align="center">Number</td>
+                    <td align="center">130</td>
+                    <td>Text width of frame surrounds, units: px.</td>
+                </tr>
+                <tr>
+                    <td>textSize</td>
+                    <td align="center">Number</td>
+                    <td align="center">12</td>
+                    <td>Font size of text, units: px.</td>
+                </tr>
+                <tr>
+                    <td>textColor</td>
+                    <td align="center">String</td>
+                    <td align="center">'white'</td>
+                    <td>Text color, you can use HEX or RGBA color codes.</td>
+                </tr>
+                <tr>
+                    <td>textBg</td>
+                    <td align="center">String</td>
+                    <td align="center">'rgba(0, 0, 0, 0.4)'</td>
+                    <td>Background color, you can use HEX or RGBA color codes.</td>
+                </tr>
+                <tr>
+                    <td>gravity</td>
+                    <td align="center">String</td>
+                    <td align="center">'se'</td>
+                    <td>The position of the watermark on the image (nw, n, ne, w, e, sw, s, se, c).</td>
+                </tr>
+                <tr>
+                    <td>opacity</td>
+                    <td align="center">Number</td>
+                    <td align="center">0.7</td>
+                    <td>The transparency of watermark, the value between 0 and 1.</td>
+                </tr>
+                <tr>
+                    <td>margin</td>
+                    <td align="center">Number</td>
+                    <td align="center">10</td>
+                    <td>Distance from watermark to edge of image.</td>
+                </tr>
+                <tr>
+                    <td>outputWidth</td>
+                    <td align="center">Number</td>
+                    <td align="center">'auto'</td>
+                    <td>Image width after adding watermark, units: px or use 'auto'.</td>
+                </tr>
+                <tr>
+                    <td>outputHeight</td>
+                    <td align="center">Number</td>
+                    <td align="center">'auto'</td>
+                    <td>Image height after adding watermark, units: px or use 'auto'.</td>
+                </tr>
+                <tr>
+                    <td>outputType</td>
+                    <td align="center">String</td>
+                    <td align="center">'jpeg'</td>
+                    <td>Image format after adding watermark, You can use one of three types (jpeg, png, webp).</td>
+                </tr>
+                <tr>
+                    <td>done</td>
+                    <td align="center">Function</td>
+                    <td align="center"><code>function(imgURL){this.src=imgURL;}</code></td>
+                    <td>Called after image with watermark is created.</td>
+                </tr>
+                <tr>
+                    <td>fail</td>
+                    <td align="center">Function</td>
+                    <td align="center"><code>function(){}</code></td>
+                    <td>Called after an error of images is occurring.</td>
+                </tr>
+                <tr>
+                    <td>always</td>
+                    <td align="center">Function</td>
+                    <td align="center"><code>function(){}</code></td>
+                    <td>Called when processing finishes (done and fail).</td>
+                </tr>
+            </tbody>
+        </table>
 
-<p><strong>Note</strong>:</p>
+        <p><strong>Note</strong>:</p>
 
-<ol>
-<li> If you use the <code>text</code> parameter, <code>path</code> parameter will be disabled. The watermark will be created from the text you type in <code>text</code> parameter.</li>
-<li> In the <code>outputType</code> parameter, <code>webp</code> format only works on the Chrome browser. With other browsers, it will return the <code>png</code> format. Should avoid use <code>png</code> format, because image quality not much higher, but the output image size is quite large.</li>
-</ol>
+        <ol>
+            <li> If you use the <code>text</code> parameter, <code>path</code> parameter will be disabled. The watermark
+                will be created from the text you type in <code>text</code> parameter.</li>
+            <li> In the <code>outputType</code> parameter, <code>webp</code> format only works on the Chrome browser.
+                With other browsers, it will return the <code>png</code> format. Should avoid use <code>png</code>
+                format, because image quality not much higher, but the output image size is quite large.</li>
+        </ol>
 
-<h2>
-<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+        <h2>
+            <a id="examples" class="anchor" href="#examples" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Examples</h2>
 
-<h3>
-<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic usage</h3>
+        <h3>
+            <a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Basic usage</h3>
 
-<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">img</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>img_awesome<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>img/1.jpg<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> /&gt;
+        <div class="highlight highlight-html">
+            <pre>&lt;<span class="pl-ent">img</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>img_awesome<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>img/1.jpg<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> /&gt;
 &lt;<span class="pl-ent">img</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>img_awesome<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>img/2.jpg<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> /&gt;
-&lt;<span class="pl-ent">img</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>img_awesome<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>img/3.jpg<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> /&gt;</pre></div>
+&lt;<span class="pl-ent">img</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>img_awesome<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>img/3.jpg<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> /&gt;</pre>
+        </div>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+        <div class="highlight highlight-js">
+            <pre>$(<span class="pl-k">function</span>() {
   $(<span class="pl-s"><span class="pl-pds">'</span>.img_awesome<span class="pl-pds">'</span></span>).watermark();
-});</pre></div>
+});</pre>
+        </div>
 
-<p>With this usage, you need put <code>watermark.png</code> image in the root directory. You can replace it by using the <code>path</code> parameter with an URL image or base64 image.</p>
+        <p>With this usage, you need put <code>watermark.png</code> image in the root directory. You can replace it by
+            using the <code>path</code> parameter with an URL image or base64 image.</p>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+        <div class="highlight highlight-js">
+            <pre>$(<span class="pl-k">function</span>() {
   $(<span class="pl-s"><span class="pl-pds">'</span>.img_awesome<span class="pl-pds">'</span></span>).watermark({
-    path<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>http://i.imgur.com/LcpZHu5.png<span class="pl-pds">'</span></span>
+    path<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>https://i.imgur.com/LcpZHu5.png<span class="pl-pds">'</span></span>
   });
-});</pre></div>
+});</pre>
+        </div>
 
-<h3>
-<a id="choose-output-image-size" class="anchor" href="#choose-output-image-size" aria-hidden="true"><span class="octicon octicon-link"></span></a>Choose output image size</h3>
+        <h3>
+            <a id="choose-output-image-size" class="anchor" href="#choose-output-image-size" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Choose output image size</h3>
 
-<p>For example, limit the maximum width is 500px.</p>
+        <p>For example, limit the maximum width is 500px.</p>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+        <div class="highlight highlight-js">
+            <pre>$(<span class="pl-k">function</span>() {
   $(<span class="pl-s"><span class="pl-pds">'</span>.img_awesome<span class="pl-pds">'</span></span>).watermark({
     outputWidth<span class="pl-k">:</span> <span class="pl-c1">500</span>
   });
-});</pre></div>
+});</pre>
+        </div>
 
-<p>You can also limit the height of image with <code>outputHeight</code> parameter. Should not use 2 size parameters simultaneously, because it can distort your image. Should only use a parameter, it will adjust the remaining parameter with image ratio.</p>
+        <p>You can also limit the height of image with <code>outputHeight</code> parameter. Should not use 2 size
+            parameters simultaneously, because it can distort your image. Should only use a parameter, it will adjust
+            the remaining parameter with image ratio.</p>
 
-<h3>
-<a id="use-text-as-watermark" class="anchor" href="#use-text-as-watermark" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use text as watermark</h3>
+        <h3>
+            <a id="use-text-as-watermark" class="anchor" href="#use-text-as-watermark" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Use text as watermark</h3>
 
-<p>Like 9gag style.</p>
+        <p>Like 9gag style.</p>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+        <div class="highlight highlight-js">
+            <pre>$(<span class="pl-k">function</span>() {
   $(<span class="pl-s"><span class="pl-pds">'</span>.img_awesome<span class="pl-pds">'</span></span>).watermark({
     text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>GOOGLE.COM<span class="pl-pds">'</span></span>,
     textWidth<span class="pl-k">:</span> <span class="pl-c1">100</span>,
@@ -329,31 +374,39 @@
     opacity<span class="pl-k">:</span> <span class="pl-c1">1</span>,
     margin<span class="pl-k">:</span> <span class="pl-c1">12</span>
   });
-});</pre></div>
+});</pre>
+        </div>
 
-<h3>
-<a id="use-image-url" class="anchor" href="#use-image-url" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use image URL</h3>
+        <h3>
+            <a id="use-image-url" class="anchor" href="#use-image-url" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Use image URL</h3>
 
-<p>If you use the image URL, and you just want to export the image URL (added watermark), you can use the following ways:</p>
+        <p>If you use the image URL, and you just want to export the image URL (added watermark), you can use the
+            following ways:</p>
 
-<h4>
-<a id="one-image" class="anchor" href="#one-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>One image</h4>
+        <h4>
+            <a id="one-image" class="anchor" href="#one-image" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>One image</h4>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
+        <div class="highlight highlight-js">
+            <pre>$(<span class="pl-k">function</span>() {
     $(<span class="pl-s"><span class="pl-pds">'</span>&lt;img&gt;<span class="pl-pds">'</span></span>, {
-        src<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>http://i.imgur.com/AAPx3rB.jpg<span class="pl-pds">'</span></span>
+        src<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>https://i.imgur.com/AAPx3rB.jpg<span class="pl-pds">'</span></span>
     }).watermark({
         <span class="pl-en">done</span><span class="pl-k">:</span> <span class="pl-k">function</span> (<span class="pl-smi">imgURL</span>) {
             <span class="pl-en">console</span><span class="pl-c1">.log</span>(imgURL);
         }
     });
-});</pre></div>
+});</pre>
+        </div>
 
-<h4>
-<a id="multiple-images" class="anchor" href="#multiple-images" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multiple images</h4>
+        <h4>
+            <a id="multiple-images" class="anchor" href="#multiple-images" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Multiple images</h4>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-k">function</span>() {
-    <span class="pl-k">var</span> inputImages <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>http://i.imgur.com/AAPx3rB.jpg<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>http://i.imgur.com/39dfdPw.jpg<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>http://i.imgur.com/3OfclQY.jpg<span class="pl-pds">'</span></span>];
+        <div class="highlight highlight-js">
+            <pre>$(<span class="pl-k">function</span>() {
+    <span class="pl-k">var</span> inputImages <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>https://i.imgur.com/AAPx3rB.jpg<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>https://i.imgur.com/39dfdPw.jpg<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>https://i.imgur.com/3OfclQY.jpg<span class="pl-pds">'</span></span>];
 
     <span class="pl-k">var</span> outputImages <span class="pl-k">=</span> [];
 
@@ -374,28 +427,31 @@
             }
         });
     });
-});</pre></div>
+});</pre>
+        </div>
 
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+        <h2>
+            <a id="license" class="anchor" href="#license" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>License</h2>
 
-<p><a href="http://opensource.org/licenses/MIT">MIT License</a> © <a href="https://github.com/baivong">Zzbaivong</a></p>
+        <p><a href="https://opensource.org/licenses/MIT">MIT License</a> © <a
+                href="https://github.com/lelinhtinh">lelinhtinh</a></p>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/baivong/watermark">Watermark</a> is maintained by <a href="https://github.com/baivong">baivong</a>.</span>
+        <footer class="site-footer">
+            <span class="site-footer-owner"><a href="https://github.com/lelinhtinh/watermark">Watermark</a> is
+                maintained by <a href="https://github.com/lelinhtinh">lelinhtinh</a>.</span>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
+            <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                    Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a
+                    href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+        </footer>
 
     </section>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="javascripts/jquery.min.js"><\\/script>')
-    </script>
-    <script src="javascripts/jquery.watermark.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://unpkg.com/watermark@1.0.2/dist/jquery.watermark.min.js" type="text/javascript"></script>
     <script src="javascripts/main.js" type="text/javascript"></script>
 
-  </body>
-</html>
+</body>
 
+</html>
